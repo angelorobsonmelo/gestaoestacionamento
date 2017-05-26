@@ -1,7 +1,5 @@
 package br.com.angelorobson.gestaoestacionamento.domain;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import javax.persistence.*;
 
 /**
@@ -20,7 +18,7 @@ public class CategoriaPreco {
     @JoinColumn(name = "codigo_categoria")
     private CategoriaVeiculo categoriaVeiculo;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "codigo_empresa")
     private Empresa empresa;
 

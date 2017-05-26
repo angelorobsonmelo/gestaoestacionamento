@@ -1,5 +1,7 @@
 package br.com.angelorobson.gestaoestacionamento.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -13,15 +15,12 @@ public class Mensalista extends Usuario {
     private String cnpj;
 
     @OneToOne(mappedBy = "mensalista", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private VeiculoMensalista veiculoMensalista;
 
     @ManyToOne
     @JoinColumn(name = "codigo_empresa")
     private Empresa empresa;
-
-    @ManyToOne
-    @JoinColumn(name = "codigo_proprietario")
-    private Proprietario proprietario;
 
     public String getCnpj() {
         return cnpj;
@@ -50,11 +49,4 @@ public class Mensalista extends Usuario {
         this.empresa = empresa;
     }
 
-    public Proprietario getProprietario() {
-        return proprietario;
-    }
-
-    public void setProprietario(Proprietario proprietario) {
-        this.proprietario = proprietario;
-    }
 }

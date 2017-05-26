@@ -12,17 +12,16 @@ public class Funcionario extends Usuario {
 
     private String funcao;
 
+    @ManyToOne
+    private Empresa empresa;
+
     public String getFuncao() {
         return funcao;
     }
 
-
     public void setFuncao(String funcao) {
         this.funcao = funcao;
     }
-
-    @ManyToOne
-    private Empresa empresa;
 
     public Empresa getEmpresa() {
         return empresa;

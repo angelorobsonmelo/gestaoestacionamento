@@ -1,5 +1,7 @@
 package br.com.angelorobson.gestaoestacionamento.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.function.DoubleBinaryOperator;
@@ -26,6 +28,7 @@ public class GastoAvulso {
     @JoinColumn(name = "cod_empresa")
     private Empresa empresa;
 
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private Date data;
 
     public Long getId() {

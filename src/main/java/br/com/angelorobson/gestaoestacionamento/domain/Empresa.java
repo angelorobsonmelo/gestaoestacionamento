@@ -30,9 +30,6 @@ public class Empresa {
     @JsonManagedReference
     private List<TelefoneEmpresa> telefoneEmpresas;
 
-    @OneToMany(mappedBy = "empresa")
-    private List<CategoriaPreco> categoriaPrecos;
-
     public Long getId() {
         return id;
     }

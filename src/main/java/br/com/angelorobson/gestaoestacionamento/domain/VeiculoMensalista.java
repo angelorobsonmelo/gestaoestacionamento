@@ -1,5 +1,6 @@
 package br.com.angelorobson.gestaoestacionamento.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jdk.nashorn.internal.ir.annotations.Ignore;
 
 import javax.persistence.*;
@@ -18,6 +19,7 @@ public class VeiculoMensalista {
 
     @OneToOne
     @JoinColumn(name = "codigo_mensalista")
+    @JsonBackReference
     private Mensalista mensalista;
 
     @OneToOne
@@ -78,5 +80,13 @@ public class VeiculoMensalista {
 
     public void setCor(String cor) {
         this.cor = cor;
+    }
+
+    public CategoriaVeiculo getCategoriaVeiculo() {
+        return categoriaVeiculo;
+    }
+
+    public void setCategoriaVeiculo(CategoriaVeiculo categoriaVeiculo) {
+        this.categoriaVeiculo = categoriaVeiculo;
     }
 }
