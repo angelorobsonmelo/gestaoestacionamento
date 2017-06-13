@@ -1,27 +1,31 @@
 package br.com.angelorobson.gestaoestacionamento.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
- * Created by Angelo on 24/05/2017.
+ * Created by Angelo on 30/05/2017.
  */
 @Entity
-public class CategoriaPreco {
-
+public class PrecoCategoriaVeiculoPeriodo implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Double preco;
-
     @OneToOne
-    @JoinColumn(name = "codigo_categoria")
+    @JoinColumn(name = "cod_periodo")
+    private Periodo periodo;
+
+    @ManyToOne
+    @JoinColumn(name = "cod_categoria_veiculo")
     private CategoriaVeiculo categoriaVeiculo;
 
-    @OneToOne
-    @JoinColumn(name = "codigo_empresa")
+    @ManyToOne
+    @JoinColumn(name = "cod_empresa")
     private Empresa empresa;
+
+    private Double valor;
 
     public Long getId() {
         return id;
@@ -31,12 +35,12 @@ public class CategoriaPreco {
         this.id = id;
     }
 
-    public Double getPreco() {
-        return preco;
+    public Periodo getPeriodo() {
+        return periodo;
     }
 
-    public void setPreco(Double preco) {
-        this.preco = preco;
+    public void setPeriodo(Periodo periodo) {
+        this.periodo = periodo;
     }
 
     public CategoriaVeiculo getCategoriaVeiculo() {
@@ -53,5 +57,13 @@ public class CategoriaPreco {
 
     public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
+    }
+
+    public Double getValor() {
+        return valor;
+    }
+
+    public void setValor(Double valor) {
+        this.valor = valor;
     }
 }

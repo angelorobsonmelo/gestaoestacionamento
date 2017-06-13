@@ -17,19 +17,21 @@ public class Mensalidade {
 
     private Integer diaUtilPagamento;
 
-    @OneToOne
-    @JoinColumn(name = "cod_categoria_preco")
-    private CategoriaPreco categoriaPreco;
-
     private Double valor;
 
     private Integer percentualDesconto;
 
-    private Boolean status;
+    @ManyToOne
+    @JoinColumn(name = "cod_usuario_baixa")
+    private Usuario usuario;
+
+    @OneToOne
+    @JoinColumn(name = "status_mensalidade")
+    private StatusMensalidade statusMensalidade;
 
     private Date dataPagamento;
 
-    private Integer quantidadeMes;
+    private Integer diaPagamento;
 
     @ManyToOne
     @JoinColumn(name = "cod_mensalista")
@@ -51,14 +53,6 @@ public class Mensalidade {
         this.diaUtilPagamento = diaUtilPagamento;
     }
 
-    public CategoriaPreco getCategoriaPreco() {
-        return categoriaPreco;
-    }
-
-    public void setCategoriaPreco(CategoriaPreco categoriaPreco) {
-        this.categoriaPreco = categoriaPreco;
-    }
-
     public Double getValor() {
         return valor;
     }
@@ -75,13 +69,6 @@ public class Mensalidade {
         this.percentualDesconto = percentualDesconto;
     }
 
-    public Boolean getStatus() {
-        return status;
-    }
-
-    public void setStatus(Boolean status) {
-        this.status = status;
-    }
 
     public Date getDataPagamento() {
         return dataPagamento;
@@ -91,19 +78,35 @@ public class Mensalidade {
         this.dataPagamento = dataPagamento;
     }
 
-    public Integer getQuantidadeMes() {
-        return quantidadeMes;
-    }
-
-    public void setQuantidadeMes(Integer quantidadeMes) {
-        this.quantidadeMes = quantidadeMes;
-    }
-
     public Mensalista getMensalista() {
         return mensalista;
     }
 
     public void setMensalista(Mensalista mensalista) {
         this.mensalista = mensalista;
+    }
+
+    public StatusMensalidade getStatusMensalidade() {
+        return statusMensalidade;
+    }
+
+    public void setStatusMensalidade(StatusMensalidade statusMensalidade) {
+        this.statusMensalidade = statusMensalidade;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Integer getDiaPagamento() {
+        return diaPagamento;
+    }
+
+    public void setDiaPagamento(Integer diaPagamento) {
+        this.diaPagamento = diaPagamento;
     }
 }
